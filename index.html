@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma de Videos Educativos - UMG</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Hoja de estilos personalizada -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col font-sans">
+
+  <!-- Encabezado -->
+  <header class="bg-blue-900 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      <h1 class="text-2xl font-bold tracking-wide">Media de educación UMG-Jalapa</h1>
+      
+      <!-- Estado sesión usuario -->
+      <div id="user-session" class="flex items-center gap-3">
+        <!-- Se genera dinámicamente desde JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
+    
+    <!-- Filtros y búsqueda -->
+    <section class="mb-8 bg-white p-4 rounded-lg shadow flex flex-col md:flex-row gap-4 justify-between items-center">
+      <!-- Buscador -->
+      <div class="w-full md:w-1/2">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Buscar videos por título..." 
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        >
+      </div>
+
+      <!-- Selector de categorías -->
+      <div class="w-full md:w-1/3">
+        <select id="category-select" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+          <option value="">Todas las categorías</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Galería de videos -->
+    <section>
+      <div id="video-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Tarjetas dinámicas -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Login y Registro Modal -->
+  <div id="auth-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4 z-50">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative">
+      <button id="close-modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 font-bold">✕</button>
+      
+      <!-- Pestañas login-registro -->
+      <div class="flex border-b mb-4">
+        <button id="tab-login" class="w-1/2 py-2 font-semibold text-blue-600 border-b-2 border-blue-600">Iniciar Sesión</button>
+        <button id="tab-register" class="w-1/2 py-2 font-semibold text-gray-500 hover:text-blue-600">Registrarse</button>
+      </div>
+
+      <!-- Formulario Login -->
+      <form id="form-login" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Carné o Correo</label>
+          <input type="text" id="login-usuario" required class="w-full mt-1 px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Contraseña (PIN)</label>
+          <input type="password" id="login-password" required class="w-full mt-1 px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Ingresar</button>
+      </form>
+
+      <!-- Formulario Registro -->
+      <form id="form-register" class="space-y-4 hidden">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Carné (9999-99-99999)</label>
+          <input type="text" id="reg-carne" placeholder="1890-20-11489" required class="w-full mt-1 px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Nombre Completo</label>
+          <input type="text" id="reg-estudiante" required class="w-full mt-1 px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+          <input type="email" id="reg-correo" required class="w-full mt-1 px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Contraseña (Solo números)</label>
+          <input type="password" id="reg-password" pattern="[0-9]+" required class="w-full mt-1 px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+        </div>
+        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700">Registrarse</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Reproducción e interacciones Modal -->
+  <div id="video-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center p-4 z-50 overflow-y-auto">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 relative">
+      <button onclick="cerrarVideoModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 font-bold text-xl z-10">✕</button>
+      <div id="video-modal-content">
+        <!-- Contenido dinámico desde JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
