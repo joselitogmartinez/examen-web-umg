@@ -1,0 +1,65 @@
+/* --- ESTILOS PERSONALIZADOS Y AJUSTES DE UI --- */
+
+/* 1. Transición suave al abrir modales */
+#video-modal, #auth-modal {
+  transition: opacity 0.25s ease-in-out;
+}
+
+#video-modal:not(.hidden), #auth-modal:not(.hidden) {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 2. Personalización de barra de desplazamiento para el modal de videos */
+#video-modal > div::-webkit-scrollbar {
+  width: 8px;
+}
+
+#video-modal > div::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+#video-modal > div::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+
+#video-modal > div::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 3. Efectos de interacción para las tarjetas de video */
+.video-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Truncado de texto seguro para descripciones */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
